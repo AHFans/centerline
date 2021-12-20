@@ -40,12 +40,12 @@ class module:
                     self.Left_filter[i, j] = 1
     def preprocessing(self):
         self.grayimg = cv2.GaussianBlur(self.grayimg, ksize=(0, 0), sigmaX=self.sigmax, sigmaY=self.sigmay)
-        retval,img_global=cv2.threshold(self.grayimg ,130,255,cv2.THRESH_BINARY)
+     #   retval,img_global=cv2.threshold(self.grayimg ,130,255,cv2.THRESH_BINARY)
         for x in range(0, self.grayimg.shape[0]):  # column
             for y in range(0, self.grayimg.shape[1]):  # line
-                if self.grayimg[x, y] < retval:
+                if self.grayimg[x, y] < 230:
                     self.grayimg[x, y] = 0
-
+        cv2.imwrite('f.bmp',self.grayimg)
     def extraction(self):
         self.point = []
         self.skeleton_point = []
@@ -136,11 +136,11 @@ class module:
 
 if __name__=='__main__':
 
-    img = cv2.imread("bowl2.bmp")
+    img = cv2.imread("testpic/bowl2.bmp")
    # print(img)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    dr=module(gray_img,2,2,20)
+    dr=module(gray_img,2,2,10)
     dr.extraction()
     dr.drawing(img)
 

@@ -19,7 +19,7 @@ def timer(func):
 @timer
 def maximum():
 
-    img = cv2.imread("metal.bmp")
+    img = cv2.imread("testpic/metal.bmp")
        # print(img)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
